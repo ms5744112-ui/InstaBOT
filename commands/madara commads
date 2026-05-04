@@ -1,0 +1,84 @@
+const { Client, GatewayIntentBits } = require("discord.js");
+
+const client = new Client({
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent,
+    GatewayIntentBits.GuildMembers
+  ]
+});
+
+// Bot Ready
+client.on("ready", () => {
+  console.log("🔥 Shihab Bhai Bot Online!");
+});
+
+// Welcome Message
+client.on("guildMemberAdd", (member) => {
+  const channel = member.guild.channels.cache.find(
+    ch => ch.name === "welcome"
+  );
+
+  if (!channel) return;
+
+  channel.send(
+╔═══✨ 𝐖𝐄𝐋𝐂𝐎𝐌𝐄 ✨═══╗
+👑 Hello ${member.user.username}!
+Welcome to the server 🎉
+
+💬 Enjoy your stay
+⚡ Powered by Shihab Bhai Bot
+╚═══════════════════╝
+);
+});
+
+// Goodbye Message
+client.on("guildMemberRemove", (member) => {
+  const channel = member.guild.channels.cache.find(
+    ch => ch.name === "welcome"
+  );
+
+  if (!channel) return;
+
+  channel.send(
+╔═══💔 𝐆𝐎𝐎𝐃𝐁𝐘𝐄 💔═══╗
+😢 ${member.user.username} left the server
+
+💬 We will miss you!
+⚡ Shihab Bhai Bot
+╚═══════════════════╝
+);
+});
+
+// Simple Command
+client.on("messageCreate", (message) => {
+  if (message.author.bot) return;
+
+  if (message.content === "!bot") {
+    message.reply(
+╔═══🤖 𝐒𝐇𝐈𝐇𝐀𝐁 𝐁𝐇𝐀𝐈 𝐁𝐎𝐓 ═══╗
+🔥 I am always active 24/7
+💬 I protect and manage server
+⚡ Stay loyal & enjoy 😎
+╚══════════════════════╝
+);
+  }
+});
+
+client.login("YOUR_BOT_TOKEN");
+╔═══🤖 𝐒𝐇𝐈𝐇𝐀𝐁 𝐁𝐇𝐀𝐈 𝐁𝐎𝐓 ═══╗
+🔥 𝐈 𝐚𝐦 𝐚𝐥𝐰𝐚𝐲𝐬 𝐨𝐧𝐥𝐢𝐧𝐞 24/7
+⚡ 𝐏𝐨𝐰𝐞𝐫𝐟𝐮𝐥 & 𝐅𝐚𝐬𝐭
+👑 𝐑𝐞𝐬𝐩𝐞𝐜𝐭 𝐦𝐞, 𝐈 𝐫𝐞𝐬𝐩𝐞𝐜𝐭 𝐲𝐨𝐮
+╚══════════════════════╝
+if (message.content === "!help") {
+  message.reply(
+📜 COMMAND LIST:
+
+!bot ➤ Bot info 🤖
+!help ➤ Command list 📜
+
+⚡ More coming soon...
+);
+}
