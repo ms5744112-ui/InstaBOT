@@ -1,0 +1,11 @@
+
+if (message.content === "!help") {
+  message.reply(
+📜 COMMAND LIST:
+
+!bot ➤ Bot info 🤖
+!help ➤ Command list 📜
+
+⚡ More coming soon...
+);
+}
